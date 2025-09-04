@@ -1,0 +1,20 @@
+mac@MacBook-Pro-3 ~ % psql -U mac -d postgres
+psql (14.19 (Homebrew))
+Type "help" for help.
+
+postgres=# CREATE DATABASE chay;
+CREATE DATABASE
+postgres=# CREATE DATABASE chaypai;
+CREATE DATABASE
+postgres=# DROP DATABASE chaypai;
+DROP DATABASE
+postgres=# \c chay;
+You are now connected to database "chay" as user "mac".
+chay=# \c postgres
+You are now connected to database "postgres" as user "mac".
+postgres=# DROP DATABASE chay;
+DROP DATABASE
+postgres=# \q
+mac@MacBook-Pro-3 ~ % 
+
+
