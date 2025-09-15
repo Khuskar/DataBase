@@ -1,0 +1,62 @@
+mac@MacBook-Pro-3 ~ % psql -U mac -d postgres
+psql (14.19 (Homebrew))
+Type "help" for help.
+
+postgres=# CREATE TABLE students (
+postgres(# student_id SERIAL PRIMARY KEY, 
+postgres(# first_name VARCHAR(50) NOT NULL, 
+postgres(# last_name VARCHAR(50) NOT NULL, 
+postgres(# email VARCHAR(100) UNIQUE NOT NULL, 
+postgres(# faculty VARCHAR(100)
+postgres(# );
+CREATE TABLE
+postgres=# \d students
+                                          Table "public.students"
+   Column   |          Type          | Collation | Nullable |                   Default                    
+------------+------------------------+-----------+----------+----------------------------------------------
+ student_id | integer                |           | not null | nextval('students_student_id_seq'::regclass)
+ first_name | character varying(50)  |           | not null | 
+ last_name  | character varying(50)  |           | not null | 
+ email      | character varying(100) |           | not null | 
+ faculty    | character varying(100) |           |          | 
+Indexes:
+    "students_pkey" PRIMARY KEY, btree (student_id)
+    "students_email_key" UNIQUE CONSTRAINT, btree (email)
+
+postgres=# ALTER TABLE students
+postgres-# ADD COLUMN birth_date DATE;
+ALTER TABLE
+postgres=# ALTER TABLE students
+postgres-# DROP COLUMN birth_date;
+ALTER TABLE
+postgres=# ALTER TABLE students
+postgres-# ALTER COLUMN first_name TYPE TEXT;
+ALTER TABLE
+postgres=# ALTER TABLE students
+postgres-# RENAME COLUMN email TO email_address;
+ALTER TABLE
+postgres=# ALTER TABLE students
+postgres-# RENAME TO university_students;
+ALTER TABLE
+postgres=# DROP TABLE university_students;
+DROP TABLE
+postgres=# CREATE TEMP TABLE temp_students (
+postgres(# student_id SERIAL PRIMARY KEY,
+postgres(# name VARCHAR(50)
+postgres(# );
+CREATE TABLE
+postgres=# \dt
+             List of relations
+  Schema   |     Name      | Type  | Owner 
+-----------+---------------+-------+-------
+ pg_temp_3 | temp_students | table | mac
+(1 row)
+
+postgres=# \q
+mac@MacBook-Pro-3 ~ % psql -U mac -d postgres
+psql (14.19 (Homebrew))
+Type "help" for help.
+
+postgres=# \dt
+Did not find any relations.
+postgres=# 
